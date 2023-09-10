@@ -1,0 +1,4 @@
+{
+	"exec": "ts-node src/express/server.ts",
+	"delay": 750
+}
