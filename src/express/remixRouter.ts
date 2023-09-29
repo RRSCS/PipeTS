@@ -29,7 +29,7 @@ uiRouter.use(express.static("public", { maxAge: "1h" }));
 
 uiRouter.all("*", (request, response, next) => {
   if (NODE_ENV === "development") {
-    createDevRequestHandler();
+    createDevRequestHandler()(request, response, next);
   } else {
     createRequestHandler({
       build: require(BUILD_PATH),
@@ -38,7 +38,7 @@ uiRouter.all("*", (request, response, next) => {
   }
 });
 
-async function createDevRequestHandler() {
+function createDevRequestHandler() {
   let build = require(BUILD_PATH);
 
   async function handleServerUpdate() {
@@ -54,9 +54,9 @@ async function createDevRequestHandler() {
     .on("add", handleServerUpdate)
     .on("change", handleServerUpdate);
 
-  broadcastDevReady(require(BUILD_PATH));
+  broadcastDevReady(build);
 
-  return async (request: Request, response: Response, next: NextFunction) => {
+  return (request: Request, response: Response, next: NextFunction) => {
     try {
       return createRequestHandler({
         build,

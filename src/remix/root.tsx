@@ -9,6 +9,7 @@ import {
 } from "@remix-run/react";
 import stylesheet from "~/tailwind.css";
 import NavBar from "./components/nav/NavBar";
+import { SideBar } from "./components/nav/Sidebar";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -29,11 +30,14 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <NavBar />
-        <Outlet />
+      <body className="m-0">
+        <SideBar>
+          <NavBar />
+          <Outlet />
+        </SideBar>
         <ScrollRestoration />
         <Scripts />
+        <LiveReload />
       </body>
     </html>
   );
