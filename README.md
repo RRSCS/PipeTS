@@ -23,9 +23,10 @@ account page:
 user info
 basic permissions structure, most likely dependant on cloud platofrm
 
-runs on k8, pod spins up sepreate thread running the pipeline and commits logs to mongo, scaled by metric server or cpu%,
+2 clusters 1 databse
 
-on load the ui hits an endpoint called status for a particular folder or pipeline. a pod returns a manifest of any acitve pipelines with the pod its runing ons address.
-the UI can then make a direct http call to the pod the pipeline is running on, which returns an initial dump of all the previous logs and the node state data, however leaves the response open streaming the new logs and node info as well. This will be an object stream with some indciator to tell the ui what to do with it. 
+cluster 1 is the ui, cluster 2 is the cmd server
+
+ui makes request to ui server to initiate pipeline, ui cluster calls cmd cluster with config to run, cmd cluster intiates and begins populating mongo with details, and the ui server then opens a watch steam from mongo, which is sent back to the client. in the case it is already running we just open the listining stream. 
 
 
