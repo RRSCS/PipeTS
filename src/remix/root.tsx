@@ -13,6 +13,10 @@ import { SideBar } from "./components/nav/Sidebar";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0",
+  },
 ];
 
 export const meta: MetaFunction = () => ({
@@ -33,7 +37,9 @@ export default function App() {
       <body className="m-0">
         <SideBar>
           <NavBar />
-          <Outlet />
+          <main className="flex flex-col w-full justify-center items-center">
+            <Outlet />
+          </main>
         </SideBar>
         <ScrollRestoration />
         <Scripts />

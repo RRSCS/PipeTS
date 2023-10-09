@@ -8,7 +8,9 @@ module.exports = {
   tailwind: true,
   routes(defineRoutes) {
     return defineRoutes((route) => {
-      route("/", "routes/index.tsx");
+      route("/", "routes/home.tsx");
+      route("/pipelines", "routes/pipelines.tsx");
+      // route("/", "routes/home.tsx");
     });
   },
   future: {

@@ -3,27 +3,31 @@ import { Link } from "@remix-run/react";
 export default function NavBar() {
   return (
     <div className="navbar bg-base-100">
-      <SideBarControlButton />
-      <div className="flex-1">
+      <div className="navbar-start">
+        <SideBarControlButton />
         <a className="btn btn-ghost normal-case text-xl">PipeTS</a>
       </div>
-      <div className="flex-none">
+      <div className="navbar-center">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/"/>
+            <Link to="/pipelines">Pipelines</Link>
           </li>
           <li>
-            <a>Link</a>
+            <Link to="/jobs">Jobs</Link>
           </li>
+        </ul>
+      </div>
+      <div className="navbar-end">
+        <ul className="menu menu-horizontal px-1">
           <li>
             <details>
-              <summary>Parent</summary>
+              <summary>Account</summary>
               <ul className="p-2 bg-base-100">
                 <li>
-                  <a>Link 1</a>
+                  <a>Login</a>
                 </li>
                 <li>
-                  <a>Link 2</a>
+                  <a>Register</a>
                 </li>
               </ul>
             </details>

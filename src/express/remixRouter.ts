@@ -9,6 +9,7 @@ import express, {
 } from "express";
 import chokidar from "chokidar";
 import sourceMapSupport from "source-map-support";
+import { cleanup } from "@magnusreeves/pipets-utils";
 
 sourceMapSupport.install();
 installGlobals();
@@ -42,6 +43,7 @@ function createDevRequestHandler() {
   let build = require(BUILD_PATH);
 
   async function handleServerUpdate() {
+    cleanup();
     Object.keys(require.cache).forEach((key) => {
       delete require.cache[key];
     });
