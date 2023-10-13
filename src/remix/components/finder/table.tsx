@@ -27,7 +27,15 @@ export const Row = ({
   );
 };
 
-export default function Table({ children }: { children: React.ReactNode }) {
+export default function Table({
+  children,
+  rows,
+  columns,
+}: {
+  children: React.ReactNode;
+  columns: Array<React.ReactNode>;
+  rows: Array<typeof Row>;
+}) {
   return (
     <div className="overflow-x-auto w-full">
       <table className="table">

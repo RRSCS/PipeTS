@@ -1,12 +1,13 @@
+import { Pipeline } from "@magnusreeves/pipets-utils";
 import { defer } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import Table, { Row } from "~/components/finder/table";
 import Suspended from "~/components/suspense";
-import mongoWrapper from "~/utils/mongoWrapper";
+import deferWrapper from "~/utils/deferWrapper";
 import utils from "~/utils/pipeTSUtils.server";
 
 export const loader = () => {
-  const pipelines = mongoWrapper(utils.PipelineModel.find());
+  const pipelines = deferWrapper(utils.PipelineModel.find());
 
   return defer({
     pipelines,
@@ -22,8 +23,8 @@ export default function Pipelines() {
       Render={(data: Array<Pipeline>) => {
         return (
           <Table>
-          {data.map((pipeline: PipelineAQSW) => (
-              <Row />
+            {data.map((pipeline: Pipeline) => (
+              <Row name={pipeline.details.name} status={pipeline.} type={"pipeline"} />
             ))}
           </Table>
         );

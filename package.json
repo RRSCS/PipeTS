@@ -9,7 +9,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@magnusreeves/pipets-utils": "^1.0.2",
+    "@magnusreeves/pipets-utils": "^1.0.10",
     "@remix-run/css-bundle": "^1.19.3",
     "@remix-run/express": "^1.19.3",
     "@remix-run/node": "^1.19.3",
