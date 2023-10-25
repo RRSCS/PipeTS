@@ -1,7 +1,10 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: ["./src/remix/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/remix/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/@rr-consult/tailwind-mux-ui/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {},
   },

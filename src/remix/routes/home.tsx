@@ -1,22 +1,21 @@
 import { LoaderFunction, defer } from "@remix-run/node";
-import Table, { Row } from "~/components/finder/table";
-import utils from "../utils/pipeTSUtils.server";
+//import utils from "../utils/pipeTSUtils.server";
 import { Await, useLoaderData } from "@remix-run/react";
 import { Suspense } from "react";
-import type { Directory } from "@magnusreeves/pipets-utils";
 
-export const loader: LoaderFunction = async () => {
-  const rootDirectories = new Promise((res, rej) =>
-    utils.getSubDirectories("/").then(res).catch(rej)
-  );
 
-  return defer({
-    rootDirectories,
-  });
-};
+// export const loader: LoaderFunction = async () => {
+//   const rootDirectories = new Promise((res, rej) =>
+//     utils.getSubDirectories("/").then(res).catch(rej)
+//   );
+
+//   return defer({
+//     rootDirectories,
+//   });
+// };
 
 export default function Home() {
-  const { rootDirectories } = useLoaderData();
+  //const { rootDirectories } = useLoaderData();
 
   return (
     <div className="w-4/5">

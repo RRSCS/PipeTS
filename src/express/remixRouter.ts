@@ -9,7 +9,7 @@ import express, {
 } from "express";
 import chokidar from "chokidar";
 import sourceMapSupport from "source-map-support";
-import { cleanup } from "@magnusreeves/pipets-utils";
+import { init, disconnect } from "@rr-consult/pipets-utils";
 
 sourceMapSupport.install();
 installGlobals();
@@ -41,9 +41,10 @@ uiRouter.all("*", (request, response, next) => {
 
 function createDevRequestHandler() {
   let build = require(BUILD_PATH);
-
+  let connected = false;
   async function handleServerUpdate() {
-    cleanup();
+    await disconnect();
+
     Object.keys(require.cache).forEach((key) => {
       delete require.cache[key];
     });
@@ -59,6 +60,10 @@ function createDevRequestHandler() {
   broadcastDevReady(build);
 
   return (request: Request, response: Response, next: NextFunction) => {
+    if (!connected) {
+     // init();
+      connected = true;
+    }
     try {
       return createRequestHandler({
         build,

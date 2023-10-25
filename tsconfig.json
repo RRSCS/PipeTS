@@ -2,11 +2,11 @@
   "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx", "globals.d.ts"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["@magnusreeves/pipets-utils"],
+    "types": ["@rr-consult/pipets-utils", "@rr-consult/tailwind-mux-ui"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "target": "ES2022",
     "strict": true,
